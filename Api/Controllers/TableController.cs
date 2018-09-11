@@ -5,7 +5,7 @@
     using Paramore.Brighter;
     using Paramore.Darker;
 
-    [Route("api/[table]")]
+    [Route("api/table")]
     [ApiController]
     public class TableController : ControllerBase
     {
@@ -22,7 +22,7 @@
         /// Get league table and standings by query
         /// </summary>
         [HttpGet]
-        public IActionResult GetTables(GetRankings.Query query)
+        public IActionResult GetTables([FromQuery]GetRankings.Query query)
         {
             return Ok(this.query.Execute(query));
         }

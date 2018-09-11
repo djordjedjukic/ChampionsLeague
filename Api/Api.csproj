@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\App\App.csproj" />
     <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\UnitOfWork.InMemory\UnitOfWork.InMemory.csproj" />
   </ItemGroup>
 
 </Project>

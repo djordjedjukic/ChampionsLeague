@@ -2,6 +2,8 @@
 {
     using Api.Infrastructure.Middleware;
     using App.Infrastructure;
+    using Core.UnitOfWork;
+    using UnitOfWork.InMemory;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
@@ -23,6 +25,7 @@
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.ConfigureUclCore();
+            services.AddTransient<IUnitOfWork, InMemoryUnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,7 +38,7 @@
 
             app.UseMiddleware<ExceptionHandlerMiddleware>();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

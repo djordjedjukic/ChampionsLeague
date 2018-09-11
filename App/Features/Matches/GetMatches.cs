@@ -13,6 +13,10 @@
     {
         public class Query : IQuery<Response>
         {
+            public Query()
+            {
+            }
+
             public Query(DateTime? dateFrom, DateTime? dateTo, string[] groups, string[] teams)
             {
                 this.DateFrom = dateFrom;

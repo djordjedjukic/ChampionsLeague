@@ -31,7 +31,7 @@
                     newTable.Standings.Add(CreateStanding(true, match));
                     newTable.Standings.Add(CreateStanding(false, match));
 
-                    result.Add(new Table(match));
+                    result.Add(newTable);
                 }
                 else
                 {
@@ -71,7 +71,7 @@
             }
             else
             {
-                existingAwayTeamStanding.UpdateStanding(match, true);
+                existingAwayTeamStanding.UpdateStanding(match, false);
             }
         }
     }

@@ -9,9 +9,10 @@
     using Paramore.Brighter;
     using Paramore.Darker;
 
-    [Route("api/[match]")]
+    [Produces("application/json")]
+    [Route("api/match")]
     [ApiController]
-    public class MatchController : ControllerBase
+    public class MatchController : Controller
     {
         private readonly IQueryProcessor query;
         private readonly IAmACommandProcessor command;
@@ -26,7 +27,7 @@
         /// Get all matches by query
         /// </summary>
         [HttpGet]
-        public IActionResult GetMatches(GetMatches.Query query)
+        public IActionResult GetMatches([FromQuery]GetMatches.Query query)
         {
             return Ok(this.query.Execute(query));
         }
@@ -35,7 +36,7 @@
         /// Add or update result of matches
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> InsertMatches([FromBody]List<Match> matches)
+        public async Task<IActionResult> AddUpdateMatches([FromBody]List<Match> matches)
         {
             this.command.Send(new AddUpdateMatches.Command(matches));
             return Ok(this.query.Execute(new GetRankings.Query()));
